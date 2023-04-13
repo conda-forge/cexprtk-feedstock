@@ -1,5 +1,5 @@
 {% set name = "cexprtk" %}
-{% set version = "0.4.0" %}
+{% set version = "0.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cexprtk-{{ version }}.tar.gz
-  sha256: 73b41707ea17ce446f7a23e936b5bf1d8f2932da59c7f46d0e924c544edf63f0
+  sha256: 4217ed2326ee7d53cefd86cb172711e2a60402d40c7113cfe63292ea8e9d1598
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
