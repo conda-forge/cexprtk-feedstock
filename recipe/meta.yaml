@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/cexprtk-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/cexprtk-{{ version }}.tar.gz
   sha256: 4217ed2326ee7d53cefd86cb172711e2a60402d40c7113cfe63292ea8e9d1598
 
 build:
-  number: 2
+  number: 3
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
