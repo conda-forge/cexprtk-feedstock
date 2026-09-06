@@ -1,0 +1,57 @@
+schema_version: 1
+
+context:
+  name: cexprtk
+  version: "0.4.2"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/cexprtk-${{ version }}.tar.gz
+  sha256: b012e41dca34bb6884b1d53198f5b638d3ff15ed3ca747ce5492e6cf3dede28b
+
+build:
+  number: 2
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then: python
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
+    - if: build_platform != target_platform
+      then: cython
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib("c") }}
+  host:
+    - pip
+    - python
+    - setuptools
+    - cython
+  run:
+    - python
+
+tests:
+  - python:
+      imports:
+        - cexprtk
+      pip_check: true
+
+about:
+  license: CPL-1.0
+  license_file: LICENSE
+  summary: Mathematical Expression Parsing and Evaluation in Python
+  description: |
+    cexprtk is a cython wrapper around "C++ Mathematical Expression
+    Toolkit Library (ExprTk)". Using cexprtk a powerful mathematical
+    expression engine can be incorporated into your python project.
+  homepage: https://github.com/mjdrushton/cexprtk
+  repository: https://github.com/mjdrushton/cexprtk
+  documentation: https://github.com/mjdrushton/cexprtk
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
